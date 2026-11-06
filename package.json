@@ -1,0 +1,63 @@
+{
+  "name": "dsh-space-talk",
+  "version": "0.2.0",
+  "description": "Hold Space to talk in the DeepSeek Harness composer: hold Space on an empty input box, speak, release to transcribe and auto-send. Local SenseVoice via sherpa-onnx — no API key, offline. 按住空格说话、松手自动发送的语音输入:仅在输入框为空时触发,识别在本机跑,免密钥、离线。",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    }
+  },
+  "dependencies": {
+    "sherpa-onnx-node": "^1.13.8"
+  },
+  "optionalDependencies": {
+    "sherpa-onnx": "^1.13.8"
+  },
+  "engines": {
+    "node": "^22.0.0 || >=24"
+  },
+  "scripts": {
+    "check": "node --check lib/index.js && node --check lib/client.js && node --check lib/model-cache.js && node --check lib/asr-worker.mjs",
+    "test": "npm run check && node tools/space-smoke.mjs"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "voice",
+    "voice-input",
+    "speech-to-text",
+    "asr",
+    "sensevoice",
+    "sherpa-onnx",
+    "push-to-talk",
+    "space",
+    "dictation"
+  ],
+  "author": "wangzhanchao883 (upstream dsh-hold-to-talk); dsh-space-talk modifications by local build",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangzhanchao883/dsh-hold-to-talk.git"
+  },
+  "homepage": "https://github.com/wangzhanchao883/dsh-hold-to-talk"
+}

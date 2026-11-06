@@ -1,0 +1,37 @@
+# dsh-space-talk bundle patch layer.
+# host 半身:HTTP 路由 + 本地 SenseVoice 识别引擎 + 模型按需下载。
+# 浏览器半身由 dsh.client 声明,随页面加载。
+#
+# 这里的 config 就是插件 apply(ctx, entryConfig) 收到的配置。
+# 改完需要刷新页面;host 半身的配置改动需要重启 DSH 才生效。
+- insert:
+    - id: dsh-space-talk
+      name: dsh-space-talk
+      config:
+        enabled: true
+        # 鼠标长按(原版手势)是否保留;关闭后只认空格
+        holdThresholdMs: 400
+        cancelSlidePx: 60
+        interimIntervalMs: 1500
+        minHoldMs: 250
+        # 单次最长录音,到点自动定稿
+        maxHoldMs: 60000
+        # 预览解码窗口上限(秒),定稿始终用完整音频
+        maxWindowSec: 6
+        # 定稿后自动发送;false = 只写进输入框
+        autoSend: true
+        # 按住空格说话(仅在输入框为空时触发)
+        spaceHold: true
+        spaceOnlyWhenEmpty: true
+        # 行内模式:说话时直接改写输入框(高亮 + 实时文字),不再浮一张卡片
+        inline: true
+        # 静音阈值:整段录音峰值低于它时判定“没说话”,不识别也不发送
+        minVoiceRms: 0.01
+        # SenseVoice 语言:auto / zh / en / ja / ko / yue
+        language: auto
+        useItn: true
+        numThreads: 2
+        # 模型下载镜像
+        mirror: https://hf-mirror.com
+        # 模型缓存目录;留空 = ~/.dsh/hold-to-talk/models
+        modelDir: ""
