@@ -51,11 +51,15 @@
 - 客户端新增空格按住触发：仅在输入框聚焦、草稿为空、无修饰键、非输入法组合态时接管；
 - 全局监听 `keydown` / `keyup`，接管时 `preventDefault`，避免插入空格；
 - 默认 `autoSend: true`；
-- 包名、插件 id、路由前缀改为 `dsh-space-talk` / `/dsh-space-talk`。
+- 包名、插件 id、路由前缀改为 `dsh-space-talk` / `/dsh-space-talk`；
+- **按住空格期间冻结聊天区滚动位置**：DSH 聊天区默认「跟随尾部」，说话时内容一变化就会自动滑到最底。本版在录制期间临时把 `[data-conversation-scroll]` 的 `overflow-y` 置为 `hidden` 并锁死高度，使滚动容器物理上无法移动，松手后原样还原；
+- **修复 AudioWorklet 重复注册**：`dsh-pcm-tap` 处理器按 AudioContext 去重注册，避免第二次录音抛 `NotSupportedError`。
 
-## 许可
+## 来源与许可
 
-MIT。上游版权归 wangzhanchao883；本改版同样以 MIT 发布。
+本项目是 [dsh-hold-to-talk](https://github.com/wangzhanchao883/dsh-hold-to-talk)（作者 wangzhanchao883，MIT）的派生版本，当前由 Ryan-hh 维护。
+
+按 MIT 协议要求，上游的版权声明与许可全文完整保留在 [LICENSE](./LICENSE) 中。本派生版同样以 MIT 协议发布。
 
 ## 打包与分发
 

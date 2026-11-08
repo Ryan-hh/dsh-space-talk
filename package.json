@@ -53,11 +53,17 @@
     "space",
     "dictation"
   ],
-  "author": "wangzhanchao883 (upstream dsh-hold-to-talk); dsh-space-talk modifications by local build",
+  "author": "Ryan-hh",
+  "contributors": [
+    "wangzhanchao883 (upstream dsh-hold-to-talk, MIT)"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wangzhanchao883/dsh-hold-to-talk.git"
+    "url": "git+https://github.com/Ryan-hh/dsh-space-talk.git"
   },
-  "homepage": "https://github.com/wangzhanchao883/dsh-hold-to-talk"
+  "homepage": "https://github.com/Ryan-hh/dsh-space-talk",
+  "bugs": {
+    "url": "https://github.com/Ryan-hh/dsh-space-talk/issues"
+  }
 }
